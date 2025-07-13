@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="اكتشف سحر مصر القديمة مع فرعون للسياحة - جولات سياحية، باقات فاخرة، وجولات افتراضية 360 درجة">
+    <meta name="keywords" content="سياحة مصر, أهرامات الجيزة, معبد الأقصر, معبد أبو سمبل, جولات افتراضية, باقات سياحية">
+    <meta name="author" content="PHAROH TOUR">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="PHAROH TOUR - اكتشف مصر القديمة">
+    <meta property="og:description" content="اكتشف سحر مصر القديمة مع فرعون للسياحة - جولات سياحية، باقات فاخرة، وجولات افتراضية 360 درجة">
+    <meta property="og:image" content="assets/logo.png">
+    <meta property="og:url" content="https://pharohtour.com">
+    <title>PHAROH TOUR - اكتشف مصر القديمة | جولات سياحية وباقات فاخرة</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header">
+            <nav class="navbar">
+                <div class="logo">
+                    <span class="pharaoh-logo-text">Pharoh Tour</span>
+                </div>
+            <div class="nav-links">
+                <a href="#home" class="active" data-translate="home">الرئيسية</a>
+                <a href="#destinations" data-translate="destinations">الوجهات السياحية</a>
+                <a href="#virtual-tour" data-translate="virtualTour">جولة 360 درجة</a>
+                <a href="#packages" data-translate="packages">الباقات السياحية</a>
+                <a href="#about" data-translate="about">عن الشركة</a>
+                <a href="#contact" data-translate="contact">اتصل بنا</a>
+                <button class="lang-switch" onclick="toggleLanguage()">
+                    <span class="lang-text">English</span>
+                </button>
+            </div>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>    
+    
+    <!-- Hero Section -->
+    <section id="home">
+        <div class="section hero">
+            <div class="hero-content">
+                <h1 data-aos="fade-up" data-translate="heroTitle">اكتشف سحر مصر القديمة</h1>
+                <p data-aos="fade-up" data-aos-delay="200" data-translate="heroSubtitle">عش تجربة آلاف السنين من التاريخ والحضارة</p>
+                <a href="#destinations" class="cta-btn" data-aos="fade-up" data-aos-delay="400" data-translate="exploreBtn">اكتشف الآن</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Destinations Section -->
+    <section id="destinations">
+        <div class="section destinations">
+            <h2 class="section-title" data-aos="fade-up" data-translate="destinations">الوجهات السياحية الشهيرة</h2>
+        <div class="swiper destinationsSwiper">
+            <div class="swiper-wrapper">
+                <!-- Great Pyramids -->
+                <div class="swiper-slide">
+                    <div class="destination-card">
+                        <img src="https://cdn.pixabay.com/photo/2023/01/01/21/33/pyramids-7691477_1280.jpg" 
+                             alt="أهرامات الجيزة - آخر عجائب الدنيا السبع" 
+                             width="400" 
+                             height="250" 
+                             loading="lazy">
+                        <div class="card-content">
+                            <h3 data-translate="pyramids">أهرامات الجيزة</h3>
+                            <p data-translate="pyramidsDesc">آخر عجائب العالم القديم الباقية</p>
+                            <a href="https://maps.google.com/maps?q=Great+Pyramid+of+Giza" target="_blank" class="btn" data-translate="learnMore">اكتشف المزيد</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Luxor Temple -->
+                <div class="swiper-slide">
+                    <div class="destination-card">
+                        <img src="https://cdn.pixabay.com/photo/2021/03/28/11/00/luxor-6130657_1280.jpg" 
+                             alt="معبد الأقصر - مجمع المعابد المصرية القديمة" 
+                             width="400" 
+                             height="250" 
+                             loading="lazy">
+                        <div class="card-content">
+                            <h3 data-translate="luxor">معبد الأقصر</h3>
+                            <p data-translate="luxorDesc">مجمع المعابد المصرية القديمة</p>
+                            <a href="https://maps.google.com/maps?q=Luxor+Temple" target="_blank" class="btn" data-translate="learnMore">اكتشف المزيد</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Abu Simbel -->
+                <div class="swiper-slide">
+                    <div class="destination-card">
+                        <img src="https://cdn.pixabay.com/photo/2017/03/20/14/33/abu-simbel-2159769_1280.jpg" 
+                             alt="معبد أبو سمبل - تحفة معمارية من عصر رمسيس الثاني" 
+                             width="400" 
+                             height="250" 
+                             loading="lazy">
+                        <div class="card-content">
+                            <h3 data-translate="abuSimbel">معبد أبو سمبل</h3>
+                            <p data-translate="abuSimbelDesc">تحفة معمارية من عصر رمسيس الثاني</p>
+                            <a href="https://maps.google.com/maps?q=Abu+Simbel+temples" target="_blank" class="btn" data-translate="learnMore">اكتشف المزيد</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Egyptian Museum -->
+                <div class="swiper-slide">
+                    <div class="destination-card">
+                        <img src="https://cdn.pixabay.com/photo/2017/10/04/12/35/egypt-2816474_1280.jpg" alt="المتحف المصري">
+                        <div class="card-content">
+                            <h3 data-translate="museum">المتحف المصري</h3>
+                            <p data-translate="museumDesc">موطن الآثار المصرية القديمة</p>
+                            <a href="https://maps.google.com/maps?q=The+Egyptian+Museum" target="_blank" class="btn" data-translate="learnMore">اكتشف المزيد</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Karnak Temple -->
+                <div class="swiper-slide">
+                    <div class="destination-card">
+                        <img src="https://cdn.pixabay.com/photo/2021/03/28/11/01/luxor-6130659_1280.jpg" alt="معبد الكرنك">
+                        <div class="card-content">
+                            <h3 data-translate="karnak">معبد الكرنك</h3>
+                            <p data-translate="karnakDesc">أكبر دار عبادة دينية في العالم القديم</p>
+                            <a href="https://maps.google.com/maps?q=Karnak+Temple" target="_blank" class="btn" data-translate="learnMore">اكتشف المزيد</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Valley of the Kings -->
+                <div class="swiper-slide">
+                    <div class="destination-card">
+                        <img src="https://cdn.pixabay.com/photo/2020/04/14/09/26/valley-of-the-kings-5041498_1280.jpg" alt="وادي الملوك">
+                        <div class="card-content">
+                            <h3 data-translate="valley">وادي الملوك</h3>
+                            <p data-translate="valleyDesc">مقبرة ملوك مصر القديمة</p>
+                            <a href="https://maps.google.com/maps?q=Valley+of+the+Kings" target="_blank" class="btn" data-translate="learnMore">اكتشف المزيد</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Alexandria Library -->
+                <div class="swiper-slide">
+                    <div class="destination-card">
+                        <img src="https://cdn.pixabay.com/photo/2020/01/29/16/19/library-4802850_1280.jpg" alt="مكتبة الإسكندرية">
+                        <div class="card-content">
+                            <h3 data-translate="alexandria">مكتبة الإسكندرية</h3>
+                            <p data-translate="alexandriaDesc">منارة المعرفة والثقافة</p>
+                            <a href="https://maps.google.com/maps?q=Bibliotheca+Alexandrina" target="_blank" class="btn" data-translate="learnMore">اكتشف المزيد</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+            
+    <!-- 360 Virtual Tour Section -->
+    <section id="virtual-tour" class="virtual-tour">
+        <h2 class="section-title" data-aos="fade-up" data-translate="virtualTours">جولة افتراضية 360 درجة</h2>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="tour-item">
+                        <h3 data-translate="pyramidsTour">أهرامات الجيزة - جولة افتراضية</h3>
+                        <iframe src="https://www.google.com/maps/embed?pb=!4v1687135229142!6m8!1m7!1sCAoSLEFGMVFpcE9wR0Fwa2JkY2Y4MHBCUmFXWXZJY19vOGVkOXgwdnJQN1dVWUVI!2m2!1d29.9792345!2d31.1342019!3f180!4f0!5f0.7820865974627469" 
+                                width="100%" 
+                                height="400" 
+                                allowfullscreen="true" 
+                                loading="lazy"
+                                class="tour-iframe"
+                                title="جولة افتراضية في أهرامات الجيزة">
+                        </iframe>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="tour-item">
+                        <h3 data-translate="luxorTour">معبد الأقصر - جولة افتراضية</h3>
+                        <iframe src="https://www.google.com/maps/embed?pb=!4v1687135392141!6m8!1m7!1sCAoSLEFGMVFpcE1SRXZCYURmeGRORU4tbl9HamFUT0QtZ2UtUDFxejNqY0tKUVFW!2m2!1d25.7189407!2d32.6587696!3f280!4f0!5f0.7820865974627469" 
+                                width="100%" 
+                                height="400" 
+                                allowfullscreen="true" 
+                                class="tour-iframe">
+                        </iframe>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="tour-item">
+                        <h3 data-translate="karnakTour">معبد الكرنك - جولة افتراضية</h3>
+                        <iframe src="https://www.google.com/maps/embed?pb=!4v1687135478561!6m8!1m7!1sCAoSLEFGMVFpcE1RenotLVJqRHJldUt1X2JBNzBhY19EWF9lSzBoM2tERG13NDVK!2m2!1d25.7189407!2d32.6587696!3f280!4f0!5f0.7820865974627469" 
+                                width="100%" 
+                                height="400" 
+                                allowfullscreen="true" 
+                                class="tour-iframe">
+                        </iframe>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="tour-item">
+                        <h3 data-translate="abuSimbelTour">معبد أبو سمبل - جولة افتراضية</h3>
+                        <iframe src="https://www.google.com/maps/embed?pb=!4v1687135478561!6m8!1m7!1sCAoSLEFGMVFpcE1RenotLVJqRHJldUt1X2JBNzBhY19EWF9lSzBoM2tERG13NDVK!2m2!1d22.3372368!2d31.6258793!3f280!4f0!5f0.7820865974627469" 
+                                width="100%" 
+                                height="400" 
+                                allowfullscreen="true" 
+                                class="tour-iframe">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Tour Packages Section -->
+    <section id="packages">
+        <div class="section packages">
+            <h2 class="section-title" data-aos="fade-up" data-translate="packages">الباقات السياحية</h2>
+        <div class="packages-grid">            <div class="package-card" data-aos="fade-up">
+                <div class="package-header">
+                    <h3 data-translate="classicPackage">مصر الكلاسيكية</h3>
+                    <span class="price" data-translate="classicPrice">999 دولار</span>
+                </div>
+                <p class="duration" data-translate="classicDuration">5 أيام / 4 ليالي</p>
+                <ul class="package-features">
+                    <li data-translate="classicFeatures.0">جولة الأهرامات وأبو الهول</li>
+                    <li data-translate="classicFeatures.1">زيارة المتحف المصري</li>
+                    <li data-translate="classicFeatures.2">عشاء نيلي</li>
+                    <li data-translate="classicFeatures.3">إقامة فاخرة</li>
+                </ul>
+                <a href="#" class="btn" data-translate="bookNow">احجز الآن</a>
+            </div>
+            <div class="package-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="package-header">
+                    <h3 data-translate="luxuryPackage">رحلة النيل الفاخرة</h3>
+                    <span class="price" data-translate="luxuryPrice">1,499 دولار</span>
+                </div>
+                <p class="duration" data-translate="luxuryDuration">8 أيام / 7 ليالي</p>
+                <ul class="package-features">
+                    <li data-translate="luxuryFeatures.0">رحلة نيلية من الأقصر إلى أسوان</li>
+                    <li data-translate="luxuryFeatures.1">زيارة جميع المعابد</li>
+                    <li data-translate="luxuryFeatures.2">إقامة كاملة</li>
+                    <li data-translate="luxuryFeatures.3">مرشد سياحي متخصص</li>
+                </ul>
+                <a href="#" class="btn" data-translate="bookNow">احجز الآن</a>
+            </div>
+            <div class="package-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="package-header">
+                    <h3 data-translate="adventurePackage">مغامرة استكشافية</h3>
+                    <span class="price" data-translate="adventurePrice">1,299 دولار</span>
+                </div>
+                <p class="duration" data-translate="adventureDuration">7 أيام / 6 ليالي</p>
+                <ul class="package-features">
+                    <li data-translate="adventureFeatures.0">سفاري الصحراء</li>
+                    <li data-translate="adventureFeatures.1">غوص في البحر الأحمر</li>
+                    <li data-translate="adventureFeatures.2">المواقع التاريخية</li>
+                    <li data-translate="adventureFeatures.3">تجربة بدوية</li>
+                </ul>
+                <a href="#" class="btn" data-translate="bookNow">احجز الآن</a>
+            </div>
+        </div>
+    </section>    
+    
+    <!-- About Us Section -->
+    <section id="about">
+        <div class="section about">
+            <h2 class="section-title" data-aos="fade-up" data-translate="aboutTitle">عن شركتنا</h2>
+            <div class="about-container">
+                <div class="about-content" data-aos="fade-right">
+                    <div class="about-text">
+                        <h3 data-translate="aboutSubtitle">فرعون تور - بوابتك إلى عجائب مصر القديمة</h3>
+                        <p data-translate="aboutDesc1">نحن شركة سياحية رائدة متخصصة في تقديم تجارب سياحية فريدة ومميزة في مصر. منذ تأسيسنا، كنا نعمل على تقديم أفضل الخدمات السياحية لعملائنا الكرام.</p>
+                        <p data-translate="aboutDesc2">نفخر بتقديم جولات سياحية احترافية تشمل أهم المعالم التاريخية في مصر، من الأهرامات العظيمة إلى معابد الأقصر وأسوان، مروراً بالمتاحف العالمية والمواقع الأثرية الفريدة.</p>
+                        
+                        <div class="about-features">
+                            <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
+                                <i class="fas fa-medal"></i>
+                                <h4 data-translate="feature1Title">خبرة 15+ سنة</h4>
+                                <p data-translate="feature1Desc">خبرة طويلة في مجال السياحة المصرية</p>
+                            </div>
+                            <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
+                                <i class="fas fa-users"></i>
+                                <h4 data-translate="feature2Title">+50,000 سائح</h4>
+                                <p data-translate="feature2Desc">خدمنا أكثر من 50 ألف سائح من جميع أنحاء العالم</p>
+                            </div>
+                            <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
+                                <i class="fas fa-star"></i>
+                                <h4 data-translate="feature3Title">تقييم 4.9/5</h4>
+                                <p data-translate="feature3Desc">تقييم ممتاز من عملائنا على جميع المنصات</p>
+                            </div>
+                            <div class="feature-item" data-aos="fade-up" data-aos-delay="400">
+                                <i class="fas fa-shield-alt"></i>
+                                <h4 data-translate="feature4Title">ضمان الجودة</h4>
+                                <p data-translate="feature4Desc">نضمن لك رحلة آمنة ومريحة وممتعة</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image" data-aos="fade-left">
+                    <img src="file.png" 
+                         alt="فريق فرعون تور المحترف" 
+                         width="500" 
+                         height="400" 
+                         loading="lazy">
+                </div>
+            </div>
+            
+            <!-- Our Team Section -->
+            <div class="team-section" data-aos="fade-up">
+                <h3 data-translate="teamTitle">فريقنا المحترف</h3>
+                <div class="team-grid">
+                    <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+                        <img src="#" 
+                             alt="اي اسم - اي منصب" 
+                             width="200" 
+                             height="200" 
+                             loading="lazy">
+                        <h4 data-translate="team1Name">اي اسم</h4>
+                        <p data-translate="team1Position">اي منصب</p>
+                        <p data-translate="team1Desc">خبرة 20 سنة في مجال السياحة المصرية</p>
+                    </div>
+                    <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+                        <img src="#" 
+                             alt="اي اسم - اي منصب" 
+                             width="200" 
+                             height="200" 
+                             loading="lazy">
+                        <h4 data-translate="team2Name">اي اسم</h4>
+                        <p data-translate="team2Position">اي منصب</p>
+                        <p data-translate="team2Desc">متخصصة في تنسيق الرحلات السياحية</p>
+                    </div>
+                    <div class="team-member" data-aos="fade-up" data-aos-delay="300">
+                        <img src="#" 
+                             alt="اي اسم - اي منصب" 
+                             width="200" 
+                             height="200" 
+                             loading="lazy">
+                        <h4 data-translate="team3Name">اي اسم</h4>
+                        <p data-translate="team3Position">اي منصب</p>
+                        <p data-translate="team3Desc">خبير في التاريخ المصري القديم</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section contact">
+            <h2 class="section-title" data-aos="fade-up" data-translate="contactTitle">اتصل بنا</h2>
+            <div class="contact-container">
+                <form class="contact-form" data-aos="fade-up">
+                    <input type="text" data-translate="nameLabel" placeholder="الاسم" required>
+                    <input type="email" data-translate="emailLabel" placeholder="البريد الإلكتروني" required>
+                    <select required>
+                        <option value="" data-translate="selectPackage">اختر الباقة</option>
+                        <option value="classic" data-translate="classicPackage">مصر الكلاسيكية</option>
+                        <option value="cruise" data-translate="luxuryPackage">رحلة النيل الفاخرة</option>
+                        <option value="adventure" data-translate="adventurePackage">مغامرة استكشافية</option>
+                    </select>
+                    <textarea data-translate="messageLabel" placeholder="رسالتك" required></textarea>
+                    <button type="submit" class="btn" data-translate="sendMessage">إرسال الرسالة</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer">
+            <div class="footer-content">
+            <div class="footer-section">
+                <h4>PHAROH TOUR</h4>
+                <p data-translate="footerAbout">بوابتك إلى عجائب مصر القديمة</p>
+            </div>
+            <div class="footer-section">
+                <h4 data-translate="quickLinks">روابط سريعة</h4>
+                <a href="#home" data-translate="home">الرئيسية</a>
+                <a href="#destinations" data-translate="destinations">الوجهات السياحية</a>
+                <a href="#virtual-tour" data-translate="virtualTour">جولة افتراضية</a>
+                <a href="#packages" data-translate="packages">الباقات السياحية</a>
+            </div>
+            <div class="footer-section">
+                <h4 data-translate="contactInfo">معلومات الاتصال</h4>
+                <p data-translate="email">البريد الإلكتروني: info@pharohtour.com</p>
+                <p data-translate="phone">الهاتف: ٢٠+ ١٢٣ ٤٥٦ ٧٨٩</p>
+            </div>
+            <div class="footer-section">
+                <h4 data-translate="followUs">تابعنا</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-translate="copyright">© 2025 فرعون تور. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>    
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js" defer></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="js/main.js" defer></script>
+</body>
+</html>
