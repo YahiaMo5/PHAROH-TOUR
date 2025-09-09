@@ -21,28 +21,36 @@
 </head>
 <body>
     <!-- Header Section -->
-    <header>
-        <div class="header">
-            <nav class="navbar">
-                <div class="logo">
-                    <span class="pharaoh-logo-text">Pharoh Tour</span>
-                </div>
-            <div class="nav-links">
-                <a href="#home" class="active" data-translate="home">الرئيسية</a>
-                <a href="#destinations" data-translate="destinations">الوجهات السياحية</a>
-                <a href="#virtual-tour" data-translate="virtualTour">جولة 360 درجة</a>
-                <a href="#packages" data-translate="packages">الباقات السياحية</a>
-                <a href="#about" data-translate="about">عن الشركة</a>
-                <a href="#contact" data-translate="contact">اتصل بنا</a>
-                <button class="lang-switch" onclick="toggleLanguage()">
-                    <span class="lang-text">English</span>
+    <header class="header">
+        <nav class="navbar navbar-expand-lg container">
+            <div class="d-flex align-items-center">
+                <a class="navbar-brand pharaoh-logo-text" href="index.html">Pharoh Tour</a>
+                <button class="custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="hamburger"><span></span><span></span><span></span></span>
                 </button>
             </div>
-            <div class="menu-btn">
-                <i class="fas fa-bars"></i>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="#home" data-translate="home">الرئيسية</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#destinations" data-translate="destinations">الوجهات السياحية</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#virtual-tour" data-translate="virtualTour">جولة 360 درجة</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#packages" data-translate="packages">الباقات السياحية</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about" data-translate="about">عن الشركة</a></li>
+                    <li class="nav-item"><a class="nav-link" href="faq.html" data-translate="faq">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html" data-translate="contact">اتصل بنا</a></li>
+                </ul>
+                <div class="d-flex align-items-center navbar-right">
+                    <button class="lang-switch btn me-2" onclick="toggleLanguage()"><span class="lang-text">English</span></button>
+                    <div class="nav-left-social">
+                        <a href="#" class="social-icon" aria-label="facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon" aria-label="instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon" aria-label="twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
             </div>
         </nav>
-    </header>    
+    </header>
     
     <!-- Hero Section -->
     <section id="home">
@@ -50,7 +58,48 @@
             <div class="hero-content">
                 <h1 data-aos="fade-up" data-translate="heroTitle">اكتشف سحر مصر القديمة</h1>
                 <p data-aos="fade-up" data-aos-delay="200" data-translate="heroSubtitle">عش تجربة آلاف السنين من التاريخ والحضارة</p>
-                <a href="#destinations" class="cta-btn" data-aos="fade-up" data-aos-delay="400" data-translate="exploreBtn">اكتشف الآن</a>
+                <a href="#destinations" class="btn btn-warning btn-lg" data-aos="fade-up" data-aos-delay="400" data-translate="exploreBtn">اكتشف الآن</a>
+            </div>
+        </div>
+    </section>
+    <!-- Reviews Section -->
+    <section id="reviews">
+        <div class="section reviews container">
+            <h2 class="section-title" data-aos="fade-up">تقييمات العملاء</h2>
+            <div class="row g-3" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-12 col-md-4">
+                    <div class="card review-card p-3 h-100">
+                        <div class="card-body">
+                            <p class="review-text">"تجربة لا تُنسى مع فريق محترف للغاية!"</p>
+                            <div class="review-meta d-flex justify-content-between mt-3">
+                                <span class="reviewer">أحمد</span>
+                                <span class="rating text-warning">★★★★★</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="card review-card p-3 h-100">
+                        <div class="card-body">
+                            <p class="review-text">"الخدمات ممتازة والفنادق كانت فوق المتوقع."</p>
+                            <div class="review-meta d-flex justify-content-between mt-3">
+                                <span class="reviewer">سارة</span>
+                                <span class="rating text-warning">★★★★☆</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="card review-card p-3 h-100">
+                        <div class="card-body">
+                            <p class="review-text">"المرشدون كانوا على مستوى عالٍ من الاحتراف."</p>
+                            <div class="review-meta d-flex justify-content-between mt-3">
+                                <span class="reviewer">محمود</span>
+                                <span class="rating text-warning">★★★★★</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -64,11 +113,11 @@
                 <!-- Great Pyramids -->
                 <div class="swiper-slide">
                     <div class="destination-card">
-                        <img src="https://cdn.pixabay.com/photo/2023/01/01/21/33/pyramids-7691477_1280.jpg" 
-                             alt="أهرامات الجيزة - آخر عجائب الدنيا السبع" 
-                             width="400" 
-                             height="250" 
-                             loading="lazy">
+                        <img src="#" 
+                            alt="أهرامات الجيزة - آخر عجائب الدنيا السبع" 
+                            width="400" 
+                            height="250" 
+                            loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer">
                         <div class="card-content">
                             <h3 data-translate="pyramids">أهرامات الجيزة</h3>
                             <p data-translate="pyramidsDesc">آخر عجائب العالم القديم الباقية</p>
@@ -79,11 +128,11 @@
                 <!-- Luxor Temple -->
                 <div class="swiper-slide">
                     <div class="destination-card">
-                        <img src="https://cdn.pixabay.com/photo/2021/03/28/11/00/luxor-6130657_1280.jpg" 
-                             alt="معبد الأقصر - مجمع المعابد المصرية القديمة" 
-                             width="400" 
-                             height="250" 
-                             loading="lazy">
+                        <img src="#" 
+                            alt="معبد الأقصر - مجمع المعابد المصرية القديمة" 
+                            width="400" 
+                            height="250" 
+                            loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer">
                         <div class="card-content">
                             <h3 data-translate="luxor">معبد الأقصر</h3>
                             <p data-translate="luxorDesc">مجمع المعابد المصرية القديمة</p>
@@ -94,11 +143,11 @@
                 <!-- Abu Simbel -->
                 <div class="swiper-slide">
                     <div class="destination-card">
-                        <img src="https://cdn.pixabay.com/photo/2017/03/20/14/33/abu-simbel-2159769_1280.jpg" 
-                             alt="معبد أبو سمبل - تحفة معمارية من عصر رمسيس الثاني" 
-                             width="400" 
-                             height="250" 
-                             loading="lazy">
+                        <img src="#" 
+                            alt="معبد أبو سمبل - تحفة معمارية من عصر رمسيس الثاني" 
+                            width="400" 
+                            height="250" 
+                            loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer">
                         <div class="card-content">
                             <h3 data-translate="abuSimbel">معبد أبو سمبل</h3>
                             <p data-translate="abuSimbelDesc">تحفة معمارية من عصر رمسيس الثاني</p>
@@ -109,7 +158,7 @@
                 <!-- Egyptian Museum -->
                 <div class="swiper-slide">
                     <div class="destination-card">
-                        <img src="https://cdn.pixabay.com/photo/2017/10/04/12/35/egypt-2816474_1280.jpg" alt="المتحف المصري">
+                        <img src="#" alt="المتحف المصري" crossorigin="anonymous" referrerpolicy="no-referrer">
                         <div class="card-content">
                             <h3 data-translate="museum">المتحف المصري</h3>
                             <p data-translate="museumDesc">موطن الآثار المصرية القديمة</p>
@@ -120,7 +169,7 @@
                 <!-- Karnak Temple -->
                 <div class="swiper-slide">
                     <div class="destination-card">
-                        <img src="https://cdn.pixabay.com/photo/2021/03/28/11/01/luxor-6130659_1280.jpg" alt="معبد الكرنك">
+                        <img src="#" alt="معبد الكرنك" crossorigin="anonymous" referrerpolicy="no-referrer">
                         <div class="card-content">
                             <h3 data-translate="karnak">معبد الكرنك</h3>
                             <p data-translate="karnakDesc">أكبر دار عبادة دينية في العالم القديم</p>
@@ -131,7 +180,7 @@
                 <!-- Valley of the Kings -->
                 <div class="swiper-slide">
                     <div class="destination-card">
-                        <img src="https://cdn.pixabay.com/photo/2020/04/14/09/26/valley-of-the-kings-5041498_1280.jpg" alt="وادي الملوك">
+                        <img src="#" alt="وادي الملوك" crossorigin="anonymous" referrerpolicy="no-referrer">
                         <div class="card-content">
                             <h3 data-translate="valley">وادي الملوك</h3>
                             <p data-translate="valleyDesc">مقبرة ملوك مصر القديمة</p>
@@ -142,7 +191,7 @@
                 <!-- Alexandria Library -->
                 <div class="swiper-slide">
                     <div class="destination-card">
-                        <img src="https://cdn.pixabay.com/photo/2020/01/29/16/19/library-4802850_1280.jpg" alt="مكتبة الإسكندرية">
+                        <img src="#" alt="مكتبة الإسكندرية" crossorigin="anonymous" referrerpolicy="no-referrer">
                         <div class="card-content">
                             <h3 data-translate="alexandria">مكتبة الإسكندرية</h3>
                             <p data-translate="alexandriaDesc">منارة المعرفة والثقافة</p>
@@ -160,52 +209,119 @@
     <!-- 360 Virtual Tour Section -->
     <section id="virtual-tour" class="virtual-tour">
         <h2 class="section-title" data-aos="fade-up" data-translate="virtualToursTitle">جولة افتراضية 360 درجة</h2>
+        <div class="tour-intro text-center" data-aos="fade-up">
+            <p class="tour-description" data-translate="tourDescription">استكشف عجائب مصر القديمة بتقنية 360 درجة. تجول في المواقع الأثرية الشهيرة وكأنك هناك.</p>
+        </div>
         <div class="container">
             <div class="row g-4">
-                <div class="col-md-6">
+                <div class="col-lg-6" data-aos="fade-up">
                     <div class="tour-item">
-                        <h3 data-translate="pyramidsTour">أهرامات الجيزة - جولة افتراضية</h3>
-                        <iframe src="https://www.google.com/maps/embed?pb=!4v1687135229142!6m8!1m7!1sCAoSLEFGMVFpcE9wR0Fwa2JkY2Y4MHBCUmFXWXZJY19vOGVkOXgwdnJQN1dVWUVI!2m2!1d29.9792345!2d31.1342019!3f180!4f0!5f0.7820865974627469" 
-                                width="100%" 
-                                height="400" 
-                                allowfullscreen="true" 
-                                loading="lazy"
-                                class="tour-iframe"
-                                title="جولة افتراضية في أهرامات الجيزة">
-                        </iframe>
+                        <div class="tour-header">
+                            <h3 data-translate="pyramidsTour">أهرامات الجيزة - جولة افتراضية</h3>
+                        </div>
+                        <div class="tour-frame-wrapper">
+                            <iframe src="https://www.google.com/maps/embed?pb=!4v1687135229142!6m8!1m7!1sCAoSLEFGMVFpcE9wR0Fwa2JkY2Y4MHBCUmFXWXZJY19vOGVkOXgwdnJQN1dVWUVI!2m2!1d29.9792345!2d31.1342019!3f180!4f0!5f0.7820865974627469" 
+                                    width="100%" 
+                                    height="400" 
+                                    allowfullscreen="true" 
+                                    loading="lazy"
+                                    class="tour-iframe"
+                                    allow="accelerometer; gyroscope; magnetometer"
+                                    title="جولة افتراضية في أهرامات الجيزة">
+                            </iframe>
+                            <div class="tour-controls">
+                                <button class="tour-btn" onclick="toggleFullscreen(this)" data-translate="fullscreen">
+                                    <i class="fas fa-expand"></i> عرض كامل الشاشة
+                                </button>
+                                <button class="tour-btn" data-translate="guide">
+                                    <i class="fas fa-info-circle"></i> الدليل السياحي
+                                </button>
+                            </div>
+                        </div>
+                        <div class="tour-info">
+                            <p data-translate="pyramidsTourDesc">اكتشف عظمة الأهرامات وأبو الهول عن قرب. شاهد تفاصيل البناء المذهلة والمناظر المحيطة.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="tour-item">
-                        <h3 data-translate="luxorTour">معبد الأقصر - جولة افتراضية</h3>
-                        <iframe src="https://www.google.com/maps/embed?pb=!4v1687135392141!6m8!1m7!1sCAoSLEFGMVFpcE1SRXZCYURmeGRORU4tbl9HamFUT0QtZ2UtUDFxejNqY0tKUVFW!2m2!1d25.7189407!2d32.6587696!3f280!4f0!5f0.7820865974627469" 
-                                width="100%" 
-                                height="400" 
-                                allowfullscreen="true" 
-                                class="tour-iframe">
-                        </iframe>
+                        <div class="tour-header">
+                            <h3 data-translate="luxorTour">معبد الأقصر - جولة افتراضية</h3>
+                        </div>
+                        <div class="tour-frame-wrapper">
+                            <iframe src="https://www.google.com/maps/embed?pb=!4v1687135392141!6m8!1m7!1sCAoSLEFGMVFpcE1SRXZCYURmeGRORU4tbl9HamFUT0QtZ2UtUDFxejNqY0tKUVFW!2m2!1d25.7189407!2d32.6587696!3f280!4f0!5f0.7820865974627469" 
+                                    width="100%" 
+                                    height="400" 
+                                    allowfullscreen="true" 
+                                    class="tour-iframe"
+                                    allow="accelerometer; gyroscope; magnetometer">
+                            </iframe>
+                            <div class="tour-controls">
+                                <button class="tour-btn" onclick="toggleFullscreen(this)" data-translate="fullscreen">
+                                    <i class="fas fa-expand"></i> عرض كامل الشاشة
+                                </button>
+                                <button class="tour-btn" data-translate="guide">
+                                    <i class="fas fa-info-circle"></i> الدليل السياحي
+                                </button>
+                            </div>
+                        </div>
+                        <div class="tour-info">
+                            <p data-translate="luxorTourDesc">تجول في أروقة معبد الأقصر التاريخي. شاهد النقوش والأعمدة العملاقة عن قرب.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="tour-item">
-                        <h3 data-translate="karnakTour">معبد الكرنك - جولة افتراضية</h3>
-                        <iframe src="https://www.google.com/maps/embed?pb=!4v1687135478561!6m8!1m7!1sCAoSLEFGMVFpcE1RenotLVJqRHJldUt1X2JBNzBhY19EWF9lSzBoM2tERG13NDVK!2m2!1d25.7189407!2d32.6587696!3f280!4f0!5f0.7820865974627469" 
-                                width="100%" 
-                                height="400" 
-                                allowfullscreen="true" 
-                                class="tour-iframe">
-                        </iframe>
+                        <div class="tour-header">
+                            <h3 data-translate="karnakTour">معبد الكرنك - جولة افتراضية</h3>
+                        </div>
+                        <div class="tour-frame-wrapper">
+                            <iframe src="https://www.google.com/maps/embed?pb=!4v1687135478561!6m8!1m7!1sCAoSLEFGMVFpcE1RenotLVJqRHJldUt1X2JBNzBhY19EWF9lSzBoM2tERG13NDVK!2m2!1d25.7189407!2d32.6587696!3f280!4f0!5f0.7820865974627469" 
+                                    width="100%" 
+                                    height="400" 
+                                    allowfullscreen="true" 
+                                    class="tour-iframe"
+                                    allow="accelerometer; gyroscope; magnetometer">
+                            </iframe>
+                            <div class="tour-controls">
+                                <button class="tour-btn" onclick="toggleFullscreen(this)" data-translate="fullscreen">
+                                    <i class="fas fa-expand"></i> عرض كامل الشاشة
+                                </button>
+                                <button class="tour-btn" data-translate="guide">
+                                    <i class="fas fa-info-circle"></i> الدليل السياحي
+                                </button>
+                            </div>
+                        </div>
+                        <div class="tour-info">
+                            <p data-translate="karnakTourDesc">استكشف أكبر المجمعات الدينية في العالم القديم. تجول بين الأعمدة الضخمة والمسلات الفرعونية.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="tour-item">
-                        <h3 data-translate="abuSimbelTour">معبد أبو سمبل - جولة افتراضية</h3>
-                        <iframe src="https://www.google.com/maps/embed?pb=!4v1687135478561!6m8!1m7!1sCAoSLEFGMVFpcE1RenotLVJqRHJldUt1X2JBNzBhY19EWF9lSzBoM2tERG13NDVK!2m2!1d22.3372368!2d31.6258793!3f280!4f0!5f0.7820865974627469" 
-                                width="100%" 
-                                height="400" 
-                                allowfullscreen="true" 
-                                class="tour-iframe">
-                        </iframe>
+                        <div class="tour-header">
+                            <h3 data-translate="abuSimbelTour">معبد أبو سمبل - جولة افتراضية</h3>
+                        </div>
+                        <div class="tour-frame-wrapper">
+                            <iframe src="https://www.google.com/maps/embed?pb=!4v1687135478561!6m8!1m7!1sCAoSLEFGMVFpcE1RenotLVJqRHJldUt1X2JBNzBhY19EWF9lSzBoM2tERG13NDVK!2m2!1d22.3372368!2d31.6258793!3f280!4f0!5f0.7820865974627469" 
+                                    width="100%" 
+                                    height="400" 
+                                    allowfullscreen="true" 
+                                    class="tour-iframe"
+                                    allow="accelerometer; gyroscope; magnetometer">
+                            </iframe>
+                            <div class="tour-controls">
+                                <button class="tour-btn" onclick="toggleFullscreen(this)" data-translate="fullscreen">
+                                    <i class="fas fa-expand"></i> عرض كامل الشاشة
+                                </button>
+                                <button class="tour-btn" data-translate="guide">
+                                    <i class="fas fa-info-circle"></i> الدليل السياحي
+                                </button>
+                            </div>
+                        </div>
+                        <div class="tour-info">
+                            <p data-translate="abuSimbelTourDesc">شاهد روعة معبد أبو سمبل وتماثيله العملاقة. اكتشف أسرار هذا المعبد الفريد.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -258,6 +374,47 @@
                 <a href="#" class="btn" data-translate="bookNow">احجز الآن</a>
             </div>
         </div>
+
+            <!-- Trip Planner (consolidated into Packages) -->
+            <div class="container">
+                <div class="trip-planner mt-4 p-4 rounded shadow-sm bg-white" data-aos="fade-up">
+                    <h3 class="h5 mb-3" data-translate="planner_title">خطط لرحلتك</h3>
+                    <div class="row gy-3">
+                        <div class="col-md-3">
+                            <label for="planner-destination" class="form-label" data-translate="planner_destination_label">الوجهة</label>
+                            <select id="planner-destination" class="form-select">
+                                <option value="giza" data-translate="dest_giza">أهرامات الجيزة</option>
+                                <option value="luxor" data-translate="dest_luxor">معبد الأقصر</option>
+                                <option value="aswan" data-translate="dest_aswan">أسوان / أبو سمبل</option>
+                                <option value="alexandria" data-translate="dest_alex">الإسكندرية</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="planner-nights" class="form-label" data-translate="planner_nights_label">عدد الليالي</label>
+                            <input type="number" id="planner-nights" class="form-control" min="1" value="3">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="planner-hotel" class="form-label" data-translate="planner_hotel_label">نوع الفندق</label>
+                            <select id="planner-hotel" class="form-select">
+                                <option value="standard" data-translate="hotel_standard">Standard</option>
+                                <option value="deluxe" data-translate="hotel_deluxe">Deluxe</option>
+                                <option value="luxury" data-translate="hotel_luxury">Luxury</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="planner-guests" class="form-label" data-translate="planner_guests_label">عدد الضيوف</label>
+                            <input type="number" id="planner-guests" class="form-control" min="1" value="2">
+                        </div>
+                        <div class="col-md-2 d-flex align-items-end">
+                            <button id="planner-calc" class="btn btn-primary w-100" data-translate="planner_calc">احسب</button>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <div id="planner-result" class="planner-result" aria-live="polite"></div>
+                    </div>
+                </div>
+            </div>
+
     </section>    
     
     <!-- About Us Section -->
@@ -296,69 +453,16 @@
                     </div>
                 </div>
                 <div class="about-image" data-aos="fade-left">
+
                     <img src="file.png" 
-                         alt="فريق فرعون تور المحترف" 
-                         width="500" 
-                         height="400" 
-                         loading="lazy">
+                        alt="فريق فرعون تور المحترف" 
+                        width="500" 
+                        height="400" 
+                        loading="lazy">
                 </div>
             </div>
             
-            <!-- Our Team Section -->
-            <div class="team-section" data-aos="fade-up">
-                <h3 data-translate="teamTitle">فريقنا المحترف</h3>
-                <div class="team-grid">
-                    <div class="team-member" data-aos="fade-up" data-aos-delay="100">
-                        <img src="#" 
-                             alt="اي اسم - اي منصب" 
-                             width="200" 
-                             height="200" 
-                             loading="lazy">
-                        <h4 data-translate="team1Name">اي اسم</h4>
-                        <p data-translate="team1Position">اي منصب</p>
-                        <p data-translate="team1Desc">خبرة 20 سنة في مجال السياحة المصرية</p>
-                    </div>
-                    <div class="team-member" data-aos="fade-up" data-aos-delay="200">
-                        <img src="#" 
-                             alt="اي اسم - اي منصب" 
-                             width="200" 
-                             height="200" 
-                             loading="lazy">
-                        <h4 data-translate="team2Name">اي اسم</h4>
-                        <p data-translate="team2Position">اي منصب</p>
-                        <p data-translate="team2Desc">متخصصة في تنسيق الرحلات السياحية</p>
-                    </div>
-                    <div class="team-member" data-aos="fade-up" data-aos-delay="300">
-                        <img src="#" 
-                             alt="اي اسم - اي منصب" 
-                             width="200" 
-                             height="200" 
-                             loading="lazy">
-                        <h4 data-translate="team3Name">اي اسم</h4>
-                        <p data-translate="team3Position">اي منصب</p>
-                        <p data-translate="team3Desc">خبير في التاريخ المصري القديم</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>    <!-- Contact Section -->
-    <section id="contact">
-        <div class="section contact">
-            <h2 class="section-title" data-aos="fade-up" data-translate="contactTitle">اتصل بنا</h2>
-            <div class="contact-container">
-                <form class="contact-form" data-aos="fade-up">
-                    <input type="text" data-translate="nameLabel" placeholder="الاسم" required>
-                    <input type="email" data-translate="emailLabel" placeholder="البريد الإلكتروني" required>
-                    <select required>
-                        <option value="" data-translate="selectPackage">اختر الباقة</option>
-                        <option value="classic" data-translate="classicPackage">مصر الكلاسيكية</option>
-                        <option value="cruise" data-translate="luxuryPackage">رحلة النيل الفاخرة</option>
-                        <option value="adventure" data-translate="adventurePackage">مغامرة استكشافية</option>
-                    </select>
-                    <textarea data-translate="messageLabel" placeholder="رسالتك" required></textarea>
-                    <button type="submit" class="btn" data-translate="sendMessage">إرسال الرسالة</button>
-                </form>
-            </div>
+
         </div>
     </section>
     
@@ -367,8 +471,7 @@
         <div class="footer">
             <div class="footer-content">
             <div class="footer-section">
-                <h4>PHAROH TOUR</h4>
-                <p data-translate="footerAbout">بوابتك إلى عجائب مصر القديمة</p>
+                    <h4 data-translate="footerAbout">بوابتك إلى عجائب مصر القديمة</h4>
             </div>
             <div class="footer-section">
                 <h4 data-translate="quickLinks">روابط سريعة</h4>
@@ -376,6 +479,7 @@
                 <a href="#destinations" data-translate="destinations">الوجهات السياحية</a>
                 <a href="#virtual-tour" data-translate="virtualTour">جولة افتراضية</a>
                 <a href="#packages" data-translate="packages">الباقات السياحية</a>
+                <a href="contact.html" data-translate="contact">اتصل بنا</a>
             </div>
             <div class="footer-section">
                 <h4 data-translate="contactInfo">معلومات الاتصال</h4>
@@ -401,5 +505,9 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js" defer></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     <script src="js/main.js" defer></script>
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/201234567890" target="_blank" class="whatsapp-float" aria-label="WhatsApp support">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 </body>
 </html>
