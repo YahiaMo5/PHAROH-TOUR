@@ -1,25 +1,92 @@
+// Function to toggle fullscreen for virtual tour iframes
+function toggleFullscreen(button) {
+    const frameWrapper = button.closest('.tour-frame-wrapper');
+    const iframe = frameWrapper.querySelector('iframe');
+    
+    if (!document.fullscreenElement) {
+        if (iframe.requestFullscreen) {
+            iframe.requestFullscreen();
+        } else if (iframe.webkitRequestFullscreen) { // Safari
+            iframe.webkitRequestFullscreen();
+        } else if (iframe.msRequestFullscreen) { // IE11
+            iframe.msRequestFullscreen();
+        }
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) { // Safari
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { // IE11
+            document.msExitFullscreen();
+        }
+    }
+}
+
 // Initialize AOS (Animate On Scroll)
 AOS.init({
-    duration: 1000,
+    duration: 800,
     once: true,
-    offset: 100
+    offset: 100,
+    easing: 'ease-out-cubic',
+    // disable animations on small screens to avoid layout jumps
+    disable: function() {
+        return window.innerWidth < 768; // disable on mobile
+    }
 });
 
-// Navigation Menu Toggle
-const menuBtn = document.querySelector('.menu-btn');
-const navLinks = document.querySelector('.nav-links');
 
-menuBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+// Trip Planner logic
+document.addEventListener('DOMContentLoaded', function() {
+    const calcBtn = document.getElementById('planner-calc');
+    if (calcBtn && !calcBtn.dataset.plannerBound) {
+        calcBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const dest = document.getElementById('planner-destination').value;
+            const nights = parseInt(document.getElementById('planner-nights').value, 10) || 1;
+            const hotel = document.getElementById('planner-hotel').value;
+            const guests = parseInt(document.getElementById('planner-guests').value, 10) || 1;
+
+            // Base prices per night per person by hotel category
+            const hotelRates = { standard: 30, deluxe: 60, luxury: 140 };
+            // Destination multipliers for excursions/transport
+            const destMultiplier = { giza: 1.0, luxor: 1.2, aswan: 1.3, alexandria: 0.9 };
+
+            const baseRate = hotelRates[hotel] || 30;
+            const multiplier = destMultiplier[dest] || 1.0;
+
+            // simple formula: (hotelRate * nights * guests) + (300 * multiplier)
+            const hotelCost = baseRate * nights * guests;
+            const extras = Math.round(300 * multiplier);
+            const total = hotelCost + extras;
+
+            const resultEl = document.getElementById('planner-result');
+            if (resultEl) {
+                const prefix = (translations[currentLang] && translations[currentLang].planner_result) ? translations[currentLang].planner_result : 'التكلفة المقدرة';
+                resultEl.textContent = `${prefix}: ${total} $`;
+            }
+        });
+        // mark as bound
+        calcBtn.dataset.plannerBound = '1';
+    }
+
+    // Initialize swiper after DOM ready
+    initializeSwiper();
+    initializeLanguage();
+    contactHeaderHandler();
+    initHeaderState();
 });
-
 // Smooth Scrolling for Navigation Links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         const target = this.getAttribute('href');
         if (target && target.length > 1 && document.querySelector(target)) {
             e.preventDefault();
-            document.querySelector('.nav-links').classList.remove('active');
+            // Close Bootstrap navbar collapse if open (mobile)
+            const bsCollapseEl = document.getElementById('mainNavbar');
+            if (bsCollapseEl && bsCollapseEl.classList.contains('show')) {
+                const bsCollapse = bootstrap.Collapse.getInstance(bsCollapseEl) || new bootstrap.Collapse(bsCollapseEl, {toggle:false});
+                bsCollapse.hide();
+            }
             document.querySelector(target).scrollIntoView({
                 behavior: 'smooth'
             });
@@ -30,7 +97,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Auto-hide/show navbar on scroll + white background when not over hero
 let lastScrollY = window.scrollY;
 const header = document.querySelector('.header');
-const hero = document.getElementById('home');
+// pick hero section: #home (index) or .contact-hero (contact page)
+const hero = document.getElementById('home') || document.querySelector('.contact-hero');
 
 window.addEventListener('scroll', function() {
     if (!header) return;
@@ -42,13 +110,17 @@ window.addEventListener('scroll', function() {
     }
     lastScrollY = window.scrollY;
 
-    // White background when not over hero
+    // Transparent over hero, white background after hero
     if (hero) {
         const headerHeight = header.offsetHeight;
         const heroRect = hero.getBoundingClientRect();
-        if (heroRect.bottom - headerHeight > 0) {
+        if (heroRect.bottom > headerHeight) {
+            // still over the hero area
+            header.classList.add('contact-top');
             header.classList.remove('scrolled');
         } else {
+            // scrolled past the hero
+            header.classList.remove('contact-top');
             header.classList.add('scrolled');
         }
     }
@@ -74,6 +146,11 @@ const translations = {
         // Destinations
         pyramids: 'Great Pyramids of Giza',
         pyramidsDesc: 'The last surviving wonder of the ancient world',
+    // Select-friendly destination keys (used by planner select)
+    dest_giza: 'Great Pyramids of Giza',
+    dest_luxor: 'Luxor Temple',
+    dest_aswan: 'Aswan / Abu Simbel',
+    dest_alex: 'Bibliotheca Alexandrina',
         luxor: 'Luxor Temple',
         luxorDesc: 'Ancient Egyptian temple complex',
         abuSimbel: 'Abu Simbel Temple',
@@ -128,11 +205,21 @@ const translations = {
         
         // Contact Form
         contactTitle: 'Contact Us',
+    contactInfoTitle: 'Contact Information',
+    addressTitle: 'Address',
+    phoneTitle: 'Phone',
+    emailTitle: 'Email',
+    hoursTitle: 'Working Hours',
         nameLabel: 'Your Name',
         emailLabel: 'Your Email',
         selectPackage: 'Select Package',
         messageLabel: 'Your Message',
         sendMessage: 'Send Message',
+
+    // Hotel options for planner
+    hotel_standard: 'Comfort',
+    hotel_deluxe: 'Comfort Plus',
+    hotel_luxury: 'Royal Suite',
         
         // Footer
         footerAbout: 'Your gateway to ancient Egyptian wonders',
@@ -141,11 +228,27 @@ const translations = {
         email: 'Email: info@pharohtour.com',
         phone: 'Phone: +20 123 456 789',
         followUs: 'Follow Us',
+    // FAQ
+    faq_q1: 'What is the cancellation policy?',
+    faq_a1: 'Bookings can be canceled up to 7 days in advance for a full refund. After that, partial charges may apply.',
+    faq_q2: 'Do packages include flights?',
+    faq_a2: 'Standard packages do not include flights unless explicitly stated in the package details.',
+    faq_q3: 'How can I contact support?',
+    faq_a3: 'Use the WhatsApp button at the bottom of the page or the contact form on the Contact page.',
+    faq: 'FAQ',
         copyright: '© 2025 PHAROH TOUR. All rights reserved.',
         
         // Buttons
         learnMore: 'Learn More',
         bookNow: 'Book Now',
+    // Planner
+    planner_title: 'Plan Your Trip',
+    planner_destination_label: 'Destination',
+    planner_nights_label: 'Nights',
+    planner_hotel_label: 'Hotel Type',
+    planner_guests_label: 'Guests',
+    planner_calc: 'Calculate',
+    planner_result: 'Estimated cost',
         
         // Loading Screen
         loadingTitle: 'PHAROH TOUR',
@@ -198,6 +301,11 @@ const translations = {
         // Destinations
         pyramids: 'أهرامات الجيزة',
         pyramidsDesc: 'آخر عجائب العالم القديم الباقية',
+    // keys for planner selects
+    dest_giza: 'أهرامات الجيزة',
+    dest_luxor: 'معبد الأقصر',
+    dest_aswan: 'أسوان / أبو سمبل',
+    dest_alex: 'مكتبة الإسكندرية',
         luxor: 'معبد الأقصر',
         luxorDesc: 'مجمع المعابد المصرية القديمة',
         abuSimbel: 'معبد أبو سمبل',
@@ -252,6 +360,11 @@ const translations = {
         
         // Contact Form
         contactTitle: 'اتصل بنا',
+    contactInfoTitle: 'معلومات الاتصال',
+    addressTitle: 'العنوان',
+    phoneTitle: 'الهاتف',
+    emailTitle: 'البريد الإلكتروني',
+    hoursTitle: 'ساعات العمل',
         nameLabel: 'الاسم',
         emailLabel: 'البريد الإلكتروني',
         selectPackage: 'اختر الباقة',
@@ -265,11 +378,30 @@ const translations = {
         email: 'البريد الإلكتروني: info@pharohtour.com',
         phone: 'الهاتف: ٢٠+ ١٢٣ ٤٥٦ ٧٨٩',
         followUs: 'تابعنا',
+    // FAQ
+    faq_q1: 'ما هي سياسة الإلغاء؟',
+    faq_a1: 'يمكن إلغاء الحجز قبل 7 أيام لاسترداد كامل المبلغ، وبعد ذلك يتم تطبيق رسوم جزئية.',
+    faq_q2: 'هل تشمل الباقات تذاكر الطيران؟',
+    faq_a2: 'الباقات القياسية لا تشمل تذاكر الطيران ما لم يُذكر خلاف ذلك في تفاصيل الباقة.',
+    faq_q3: 'كيف يتم التواصل مع الدعم؟',
+    faq_a3: 'يمكنك استخدام زر الواتساب في أسفل الصفحة أو نموذج الاتصال في صفحة "اتصل بنا".',
+    faq: 'الأسئلة الشائعة',
         copyright: '© 2025 فرعون تور. جميع الحقوق محفوظة.',
         
         // Buttons
         learnMore: 'اكتشف المزيد',
         bookNow: 'احجز الآن',
+    // Planner
+    planner_title: 'خطط لرحلتك',
+    planner_destination_label: 'الوجهة',
+    planner_nights_label: 'عدد الليالي',
+    planner_hotel_label: 'نوع الفندق',
+    hotel_standard: 'مريح',
+    hotel_deluxe: 'مريح بلس',
+    hotel_luxury: 'الجناح الملكي',
+    planner_guests_label: 'عدد الضيوف',
+    planner_calc: 'احسب',
+    planner_result: 'التكلفة المقدرة',
         
         // Loading Screen
         loadingTitle: 'فرعون تور',
@@ -307,11 +439,40 @@ const translations = {
 
 let currentLang = 'ar';
 
-// Swiper Initialization
+// Swiper Initialization with safe guard and dynamic loader
+function loadSwiper() {
+    return new Promise((resolve, reject) => {
+        if (typeof Swiper !== 'undefined') return resolve();
+        // if a script tag for swiper already exists, wait for it
+        const existing = document.querySelector('script[src*="swiper-bundle.min.js"]');
+        if (existing) {
+            existing.addEventListener('load', () => resolve());
+            existing.addEventListener('error', () => reject(new Error('Failed to load Swiper')));
+            return;
+        }
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js';
+        script.async = false; // preserve execution order if appended late
+        script.onload = () => resolve();
+        script.onerror = () => reject(new Error('Failed to load Swiper'));
+        document.head.appendChild(script);
+    });
+}
+
 function initializeSwiper() {
-    if (window.swiper) {
-        window.swiper.destroy();
+    if (typeof Swiper === 'undefined') {
+        // Try to load Swiper dynamically, then initialize
+        loadSwiper().then(() => initializeSwiper()).catch(err => {
+            console.warn('Swiper initialization skipped:', err);
+        });
+        return;
     }
+
+    // destroy previous instance safely
+    if (window.swiper && typeof window.swiper.destroy === 'function') {
+        try { window.swiper.destroy(true, true); } catch (e) { /* ignore */ }
+    }
+
     window.swiper = new Swiper('.destinationsSwiper', {
         slidesPerView: 1,
         spaceBetween: 30,
@@ -356,6 +517,49 @@ function initializeLanguage() {
     document.documentElement.lang = currentLang;
     document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
     updateLanguage();
+}
+
+// Special handling for Contact page header background when at top
+function contactHeaderHandler() {
+    try {
+        const isContactPage = window.location.pathname.endsWith('contact.html') || window.location.href.indexOf('contact.html') !== -1;
+        const headerEl = document.querySelector('.header');
+        const heroEl = document.querySelector('.contact-hero');
+        if (!isContactPage || !headerEl || !heroEl) return;
+
+        // set initial state based on current scroll (global scroll handler will keep it updated)
+        const headerHeight = headerEl.offsetHeight;
+        const heroRect = heroEl.getBoundingClientRect();
+        if (heroRect.bottom > headerHeight) {
+            headerEl.classList.add('contact-top');
+            headerEl.classList.remove('scrolled');
+        } else {
+            headerEl.classList.remove('contact-top');
+            headerEl.classList.add('scrolled');
+        }
+    } catch (e) {
+        // ignore
+    }
+}
+
+// Initialize header classes based on presence of a hero section (#home or .contact-hero)
+function initHeaderState() {
+    try {
+        const headerEl = document.querySelector('.header');
+        const heroEl = document.getElementById('home') || document.querySelector('.contact-hero');
+        if (!headerEl || !heroEl) return;
+        const headerHeight = headerEl.offsetHeight;
+        const heroRect = heroEl.getBoundingClientRect();
+        if (heroRect.bottom > headerHeight) {
+            headerEl.classList.add('contact-top');
+            headerEl.classList.remove('scrolled');
+        } else {
+            headerEl.classList.remove('contact-top');
+            headerEl.classList.add('scrolled');
+        }
+    } catch (e) {
+        // ignore
+    }
 }
 
 // تحديث محتوى الصفحة حسب اللغة (يدعم القوائم)
@@ -406,6 +610,8 @@ function toggleLanguage() {
 document.addEventListener('DOMContentLoaded', () => {
     initializeLanguage();
     initializeSwiper();
+    contactHeaderHandler();
+    initHeaderState();
 });
 
 // Virtual Tour Lazy Loading
@@ -548,38 +754,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadingScreen = document.getElementById('loading-screen');
     const loadingProgress = document.querySelector('.loading-progress');
     
-    // Simulate loading progress
-    let progress = 0;
-    const progressInterval = setInterval(() => {
-        progress += Math.random() * 15;
-        if (progress >= 100) {
-            progress = 100;
-            clearInterval(progressInterval);
-            
-            // Hide loading screen after a short delay
-            setTimeout(() => {
-                loadingScreen.classList.add('hidden');
+    // Only proceed if loading elements exist
+    if (loadingScreen && loadingProgress) {
+        // Simulate loading progress
+        let progress = 0;
+        const progressInterval = setInterval(() => {
+            progress += Math.random() * 15;
+            if (progress >= 100) {
+                progress = 100;
+                clearInterval(progressInterval);
                 
-                // Remove loading screen from DOM after animation
+                // Hide loading screen after a short delay
+                setTimeout(() => {
+                    loadingScreen.classList.add('hidden');
+                    
+                    // Remove loading screen from DOM after animation
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                    }, 500);
+                }, 500);
+            }
+            
+            // Update progress bar width
+            loadingProgress.style.width = progress + '%';
+        }, 100);
+        
+        // Fallback: Hide loading screen after 5 seconds maximum
+        setTimeout(() => {
+            if (!loadingScreen.classList.contains('hidden')) {
+                loadingScreen.classList.add('hidden');
                 setTimeout(() => {
                     loadingScreen.style.display = 'none';
-                }, 500);
-            }, 500);
-        }
-        
-        // Update progress bar width
-        if (loadingProgress) {
-            loadingProgress.style.width = progress + '%';
-        }
-    }, 100);
-    
-    // Fallback: Hide loading screen after 5 seconds maximum
-    setTimeout(() => {
-        if (loadingScreen && !loadingScreen.classList.contains('hidden')) {
-            loadingScreen.classList.add('hidden');
-            setTimeout(() => {
-                loadingScreen.style.display = 'none';
-            }, 1000);
-        }
-    }, 5000);
+                }, 1000);
+            }
+        }, 5000);
+    }
 });
