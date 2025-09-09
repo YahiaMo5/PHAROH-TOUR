@@ -1,0 +1,278 @@
+[dir="rtl"] .info-item {
+    text-align: right;
+}
+
+[dir="rtl"] .contact-form {
+    text-align: right;
+}
+
+[dir="rtl"] .form-group label {
+    text-align: right;
+}
+
+[dir="rtl"] .info-item i {
+    margin-left: 1rem;
+    margin-right: 0;
+}
+
+.nav-link {
+    color: #fff !important;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    padding: 0.5rem 1.2rem !important;
+    white-space: nowrap;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--accent-color) !important;
+}
+
+@media (max-width: 992px) {
+    .navbar-collapse.collapse.show {
+        background: #fff;
+        border-top: 1px solid rgba(0,0,0,0.05);
+        padding: 1rem 1.2rem;
+    }
+
+    .navbar-toggler {
+        background: var(--primary-color);
+        color: #fff;
+        border: none;
+    }
+
+    .navbar-toggler:focus {
+        outline: none;
+        box-shadow: none;
+    }
+
+    .nav-link {
+        padding: 0.8rem 1rem !important;
+    }
+}
+
+.pharaoh-logo-text {
+    color: #ffd700;
+    font-family: var(--font-cairo);
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-shadow: 0 2px 8px rgba(24,23,22,0.267), 0 0 8px rgba(255,224,102,0.267);
+    text-transform: uppercase;
+    line-height: 1;
+    padding: 0 10px;
+    font-variant: small-caps;
+}
+
+/* header.contact-top .pharaoh-logo-text handled in css/style.css */
+
+.lang-switch {
+    border: 2px solid var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+/* header.contact-top .lang-switch handled in css/style.css */
+
+.lang-switch:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+
+.faq-section {
+    flex: 1 0 auto;
+    padding: 8rem 0 4rem;
+    background: linear-gradient(135deg, #f8f5e6 0%, #f3e7c9 100%);
+}
+
+.faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.faq-list {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+/* Accordion Styling */
+.accordion-item {
+    border: 2px solid #e6b800;
+    border-radius: 12px !important;
+    margin-bottom: 1rem;
+    background: transparent;
+}
+
+.accordion-item:last-child {
+    margin-bottom: 0;
+}
+
+.accordion-button {
+    padding: 1.2rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    background: #fff;
+    border-radius: 10px !important;
+}
+
+.accordion-button:not(.collapsed) {
+    color: var(--primary-color);
+    background: #fffaf0;
+}
+
+.accordion-button:focus {
+    box-shadow: 0 0 8px #d4af3744;
+    border-color: var(--accent-color);
+}
+
+.accordion-button::after {
+    background-size: 1.2rem;
+    transition: 0.3s ease;
+}
+
+.accordion-body {
+    padding: 1.2rem;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    background: #fff;
+}
+
+/* Footer Adjustments for FAQ Page */
+.faq-page .footer {
+    margin-top: auto;
+    width: 100%;
+    background: linear-gradient(180deg, #181716ee 0%, #1a1a1aff 100%);
+    padding: 4rem 5% 2rem;
+    border-top: 4px solid var(--primary-color);
+    position: relative;
+    color: #fff;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .faq-section {
+        padding: 6rem 0 3rem;
+    }
+    
+    .accordion-button {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+    
+    .accordion-body {
+        padding: 1rem;
+    }
+    
+    .faq-list {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .faq-section {
+        padding: 5rem 0 2rem;
+    }
+    
+    .faq-list {
+        padding: 1rem;
+    }
+}
+
+
+
+/* Footer Styles */
+.footer {
+    background: linear-gradient(180deg, #181716ee 0%, #1a1a1aff 100%);
+    padding: 4rem 5% 2rem;
+    border-top: 4px solid var(--primary-color);
+    margin-top: auto;
+    position: relative;
+    color: #fff;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 2;
+}
+
+.footer-section h4 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-shadow: 0 0 8px #ffe06644;
+}
+
+.footer-section a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.8rem;
+    transition: var(--transition);
+    position: relative;
+    padding-right: 1.2rem;
+}
+
+.footer-section a:hover {
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+.footer-section p {
+    color: #fff;
+    margin-bottom: 0.8rem;
+    line-height: 1.8;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.social-links a {
+    color: #fff;
+    font-size: 1.5rem;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+}
+
+/* Footer social-links hover handled in css/style.css */
+
+.footer-bottom {
+    border-top: 1px solid #e6b80033;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.footer-bottom p {
+    color: var(--primary-color);
+    margin: 0;
+    font-size: 0.9rem;
+    text-shadow: 0 0 8px #ffe06644;
+}
